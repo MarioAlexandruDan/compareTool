@@ -46,7 +46,7 @@ public class FileLoading {
 			List<Path> list = Files.walk(path1, Integer.MAX_VALUE).filter(input -> !input.equals(path1)).toList();
 
 			for (Path path : list) {
-				map.put(path.subpath(7, path.getNameCount()),
+				map.put(path.subpath(9, path.getNameCount()),
 						Files.readAttributes(path, BasicFileAttributes.class).lastModifiedTime().toMillis());
 			}
 
@@ -66,7 +66,7 @@ public class FileLoading {
 			List<Path> list = Files.walk(path2, Integer.MAX_VALUE).filter(input -> !input.equals(path2)).toList();
 
 			for (Path path : list) {
-				map.put(path.subpath(7, path.getNameCount()),
+				map.put(path.subpath(9, path.getNameCount()),
 						Files.readAttributes(path, BasicFileAttributes.class).lastModifiedTime().toMillis());
 			}
 

@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import messages.Messages;
-import processes.FileComparing;
 import processes.FileLoading;
+import processes.FileProcessing;
 
 public class Start {
 
@@ -17,6 +17,8 @@ public class Start {
 
 		System.out.println("\n" + Messages.startMessage() + "\n");
 
+		System.out.println(Messages.tipMessage() + "\n");
+
 		System.out.println(Messages.file1Message() + path1);
 		System.out.println(Messages.file1Message() + path2 + "\n");
 
@@ -26,10 +28,27 @@ public class Start {
 			Map<Path, Long> file2List = FileLoading.file2ContentsToMap();
 
 			System.out.println(Messages.filesExistsMessage() + "\n");
-			
-			FileComparing.compareFiles(file1List, file2List);
 
+			Map<Path, String> sortedMap = FileProcessing.compareFiles(file1List, file2List);
+
+			System.out.println(Messages.newFilesMessage());
+			for (Entry<Path, String> entry : sortedMap.entrySet()) {
+				if (entry.getValue().equals("New File")) {
+					System.out.println(entry.getKey());
+				}
+			}
+
+			System.out.println(" }" + "\n" + "\n" + Messages.modifiedFilesMessage());
+
+			for (Entry<Path, String> entry : sortedMap.entrySet()) {
+				if (entry.getValue().equals("Modified File")) {
+					System.out.println(entry.getKey());
+				}
+			}
+			System.out.println(" }");
+
+		} else {
+			System.out.println(Messages.errorMessage());
 		}
-
 	}
 }
