@@ -22,8 +22,7 @@ public class Messages {
 				+ " before doing any changes to the original file." + "\n"
 				+ " 3) Inside \"File1\" Should be the original file and in \"File2\" should be the comparison file."
 				+ "\n" + " 4) If you don't want to copy your files into \"File1\" & \"File2\" you need to provide the"
-				+ "\n"
-				+ " path to each file in \"FileLoading.file1ContentsToMap()\" & \"FileLoading.file2ContentsToMap()\"."
+				+ "\n" + " path to each file in \"FileLoading.loadFile1()\" & \"FileLoading.loadFile2()\"."
 				+ " I suggest using the absolute path";
 
 		return message;
@@ -57,9 +56,16 @@ public class Messages {
 		return message;
 	}
 
-	public static String modifiedFilesMessage() {
+	public static String dateModifiedFilesMessage() {
 
-		String message = " The number of modified files are: " + FileProcessing.getModifiedFilesCounter() + " {";
+		String message = " The number of Date modified files are: " + FileProcessing.getModifiedFilesCounter() + " {";
+
+		return message;
+	}
+
+	public static String sizeChangedMessage() {
+
+		String message = " The number of files with size changes are: " + FileProcessing.getSizeChangedCounter() + " {";
 
 		return message;
 	}

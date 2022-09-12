@@ -37,14 +37,14 @@ public class FileLoading {
 		return path;
 	}
 
-	public static Map<Path, Long> file1ContentsToMap() {
+	public static Map<Path, Long> file1PathAndModifiedToMap() {
 
 		Map<Path, Long> map = new HashMap<>();
 
 		try {
 
 			List<Path> list = Files.walk(path1, Integer.MAX_VALUE).filter(input -> !input.equals(path1)).toList();
-			
+
 			for (Path path : list) {
 				map.put(path.subpath(path1.getNameCount(), path.getNameCount()),
 						Files.readAttributes(path, BasicFileAttributes.class).lastModifiedTime().toMillis());
@@ -57,7 +57,7 @@ public class FileLoading {
 		return map;
 	}
 
-	public static Map<Path, Long> file2ContentsToMap() {
+	public static Map<Path, Long> file2PathAndModifiedToMap() {
 
 		Map<Path, Long> map = new HashMap<>();
 
@@ -68,6 +68,46 @@ public class FileLoading {
 			for (Path path : list) {
 				map.put(path.subpath(path2.getNameCount(), path.getNameCount()),
 						Files.readAttributes(path, BasicFileAttributes.class).lastModifiedTime().toMillis());
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return map;
+	}
+
+	public static Map<Path, Long> file1PathAndSizeToMap() {
+
+		Map<Path, Long> map = new HashMap<>();
+
+		try {
+
+			List<Path> list = Files.walk(path1, Integer.MAX_VALUE).filter(input -> !input.equals(path1)).toList();
+
+			for (Path path : list) {
+				map.put(path.subpath(path1.getNameCount(), path.getNameCount()),
+						Files.readAttributes(path, BasicFileAttributes.class).size());
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return map;
+	}
+
+	public static Map<Path, Long> file2PathAndSizeToMap() {
+
+		Map<Path, Long> map = new HashMap<>();
+
+		try {
+
+			List<Path> list = Files.walk(path2, Integer.MAX_VALUE).filter(input -> !input.equals(path2)).toList();
+
+			for (Path path : list) {
+				map.put(path.subpath(path2.getNameCount(), path.getNameCount()),
+						Files.readAttributes(path, BasicFileAttributes.class).size());
 			}
 
 		} catch (IOException e) {
