@@ -19,7 +19,12 @@ public class Messages {
 				+ " 2) If you make some changes to an common file, you should have the same \"Date"
 				+ " modified\" on both directories and subdirectories. " + "\n"
 				+ " You can achive this by using the same command in cmd from \"1) Tip\" for copying the files"
-				+ " before doing any changes to the original file.";
+				+ " before doing any changes to the original file." + "\n"
+				+ " 3) Inside \"File1\" Should be the original file and in \"File2\" should be the comparison file."
+				+ "\n" + " 4) If you don't want to copy your files into \"File1\" & \"File2\" you need to provide the"
+				+ "\n"
+				+ " path to each file in \"FileLoading.file1ContentsToMap()\" & \"FileLoading.file2ContentsToMap()\"."
+				+ " I suggest using the absolute path";
 
 		return message;
 	}
